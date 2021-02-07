@@ -1,0 +1,4 @@
+enum UserPreference {
+  Customer,
+  Vendor,
+}
