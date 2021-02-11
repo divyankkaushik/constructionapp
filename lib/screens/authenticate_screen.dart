@@ -1,4 +1,5 @@
 import 'package:constructionapp/models/http_exception.dart';
+import 'package:constructionapp/screens/home_screen.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -25,7 +26,8 @@ class _AuthenticateScreenState extends State<AuthenticateScreen> {
   var _isLoading = false;
   EdgeInsets padding = const EdgeInsets.symmetric(horizontal: 20.0);
   TextEditingController nameController = TextEditingController();
-  TextStyle defaultStyle = TextStyle(color: AppUiColors.iconColor, fontSize: 15.0);
+  TextStyle defaultStyle =
+      TextStyle(color: AppUiColors.iconColor, fontSize: 15.0);
   TextStyle linkStyle = TextStyle(color: AppUiColors.selectedIconColor);
   Map<String, String> _authData = {
     'email': '',
@@ -104,7 +106,8 @@ class _AuthenticateScreenState extends State<AuthenticateScreen> {
       }
       _showErrorDialog(errorMessage);
     } catch (error) {
-      const errorMessage = "Could not able to authenticate. Please try again later";
+      const errorMessage =
+          "Could not able to authenticate. Please try again later";
       _showErrorDialog(errorMessage);
     }
     setState(() {
@@ -157,7 +160,9 @@ class _AuthenticateScreenState extends State<AuthenticateScreen> {
                               },
                               icon: Icon(
                                 Icons.person_outline,
-                                color: onCustomerButtonPressed ? AppUiColors.selectedIconColor : AppUiColors.iconColor,
+                                color: onCustomerButtonPressed
+                                    ? AppUiColors.selectedIconColor
+                                    : AppUiColors.iconColor,
                                 size: 70.0,
                               ),
                             ),
@@ -169,7 +174,9 @@ class _AuthenticateScreenState extends State<AuthenticateScreen> {
                             "CUSTOMER",
                             style: TextStyle(
                               fontSize: 17.0,
-                              color: onCustomerButtonPressed ? AppUiColors.selectedIconColor : AppUiColors.iconColor,
+                              color: onCustomerButtonPressed
+                                  ? AppUiColors.selectedIconColor
+                                  : AppUiColors.iconColor,
                             ),
                           ),
                         ],
@@ -197,7 +204,9 @@ class _AuthenticateScreenState extends State<AuthenticateScreen> {
                               },
                               icon: Icon(
                                 Icons.person_outline,
-                                color: onVendorButtonPressed ? AppUiColors.selectedIconColor : AppUiColors.iconColor,
+                                color: onVendorButtonPressed
+                                    ? AppUiColors.selectedIconColor
+                                    : AppUiColors.iconColor,
                                 size: 70.0,
                               ),
                             ),
@@ -209,7 +218,9 @@ class _AuthenticateScreenState extends State<AuthenticateScreen> {
                             "VENDOR",
                             style: TextStyle(
                               fontSize: 17.0,
-                              color: onVendorButtonPressed ? AppUiColors.selectedIconColor : AppUiColors.iconColor,
+                              color: onVendorButtonPressed
+                                  ? AppUiColors.selectedIconColor
+                                  : AppUiColors.iconColor,
                             ),
                           ),
                         ],
@@ -220,7 +231,10 @@ class _AuthenticateScreenState extends State<AuthenticateScreen> {
               if (_authMode == AuthMode.Signup)
                 Padding(
                   padding: padding,
-                  child: InputTextField(controller: nameController, hintText: "Name",maxLength: 20,),
+                  child: InputTextField(
+                    controller: nameController,
+                    hintText: "Name",
+                  ),
                 ),
               SizedBox(
                 height: 20.0,
@@ -280,7 +294,8 @@ class _AuthenticateScreenState extends State<AuthenticateScreen> {
                     children: [
                       Container(
                         decoration: BoxDecoration(
-                          border: Border.all(color: AppUiColors.selectedIconColor, width: 2),
+                          border: Border.all(
+                              color: AppUiColors.selectedIconColor, width: 2),
                         ),
                         width: 24,
                         height: 24,
@@ -323,7 +338,8 @@ class _AuthenticateScreenState extends State<AuthenticateScreen> {
                 height: 10.0,
               ),
               FlatButton(
-                child: Text('${_authMode == AuthMode.Login ? 'SIGNUP' : 'LOGIN'} INSTEAD'),
+                child: Text(
+                    '${_authMode == AuthMode.Login ? 'SIGNUP' : 'LOGIN'} INSTEAD'),
                 onPressed: _switchAuthMode,
                 padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 4),
                 materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
@@ -345,12 +361,34 @@ class _AuthenticateScreenState extends State<AuthenticateScreen> {
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
                       _authMode == AuthMode.Login ? 'SignIn' : 'Sign Up',
-                      style: TextStyle(color: AppUiColors.selectedIconColor, fontSize: 25.0),
+                      style: TextStyle(
+                          color: AppUiColors.selectedIconColor, fontSize: 25.0),
                     ),
                   ),
                 ),
             ],
           ),
+        ),
+      ),
+      floatingActionButton: CustomWidget(
+        onTap: () {
+          Navigator.of(context).pushNamed(HomeScreen.routename);
+        },
+        radius: 200.0,
+        height: 60.0,
+        width: 60.0,
+        gradient: RadialGradient(
+          colors: [
+            AppUiColors.backgroundColor,
+            AppUiColors.backgroundColor,
+            AppUiColors.backgroundColor,
+            AppUiColors.backgroundColor,
+          ],
+        ),
+        child: Icon(
+          Icons.arrow_forward_ios,
+          color: AppUiColors.selectedIconColor,
+          size: 30.0,
         ),
       ),
     );

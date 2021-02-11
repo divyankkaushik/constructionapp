@@ -53,7 +53,7 @@ class _CreateProductScreenState extends State<CreateProductScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return Scaffold(resizeToAvoidBottomPadding: false,
       appBar: appBarWidget(
         title: "Furniture",
         option: true,

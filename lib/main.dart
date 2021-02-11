@@ -44,6 +44,7 @@ class MyApp extends StatelessWidget {
                   builder: (context, authResultSnapshot) => authResultSnapshot.connectionState == ConnectionState.waiting ? SplashScreen() : AuthenticateScreen(),
                 ),
           routes: {
+            HomeScreen.routename: (context)=> HomeScreen(),
             VendorDashboardScreen.routename: (context) => VendorDashboardScreen(),
             CustomerDashboardScreen.routename: (context) => CustomerDashboardScreen(),
             ProfileScreen.routename: (context) => ProfileScreen(),
